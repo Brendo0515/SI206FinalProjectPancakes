@@ -7,10 +7,17 @@ import re
 import matplotlib
 import matplotlib.pyplot as plt
 
-def add_recipe_info(db_filename, recipe_name, recipe_id):
+# #to clear database
+# conn = sqlite3.connect("pancakes.sqlite")
+# cur = conn.cursor()
+# cur.execute("DELETE FROM Spoonacular")
+# conn.commit()
+# cur.close()
+
+def add_recipe_info(db_filename, recipe_name, recipe_id, recipe_time):
     conn = sqlite3.connect(db_filename)
     cur = conn.cursor()
-    cur.execute('INSERT INTO Spoonacular(recipes_name, recipes_id) VALUES (?,?)', (recipe_name, recipe_id))
+    cur.execute('INSERT INTO Spoonacular(recipeName, recipeID, timeTo_makeRecipe) VALUES (?,?,?)', (recipe_name, recipe_id, recipe_time))
     conn.commit()
     cur.close()
 
@@ -30,14 +37,8 @@ for i in range(5):
         #add recipe name to database
         recipe_name = recipe["title"]
         recipe_id = recipe["id"]
-        add_recipe_info("pancakes.sqlite", recipe_name, recipe_id)
+        recipe_time = recipe["readyInMinutes"]
+        add_recipe_info("pancakes.sqlite", recipe_name, recipe_id, recipe_time)
 
     #change offset to get the next 20 pancake recipes
     offset += 20
-
-# #to clear database
-# conn = sqlite3.connect("pancakes.sqlite")
-# cur = conn.cursor()
-# cur.execute("DELETE FROM Spoonacular")
-# conn.commit()
-# cur.close()
