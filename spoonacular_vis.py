@@ -29,6 +29,7 @@ def calc_avg_time (recipeTimes):
 file = open('pancakeAvgTime.txt','w')
 file.write('The Average Time to Make a Pancake: ')
 file.write(str(calc_avg_time(get_recipeTimes("pancakes.sqlite"))))
+file.write(' minutes')
 file.close()
 
 # plotted the times in a box plot to visualize the data
