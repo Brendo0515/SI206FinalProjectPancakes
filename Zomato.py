@@ -3,7 +3,7 @@ import unittest
 import sqlite3
 import requests
 import json
-import zomato_key
+import Zomato_key
 
 #--------------------------------------------
 #clear database
@@ -13,7 +13,7 @@ import zomato_key
 #conn.commit()
 #cur.close()
 #--------------------------------------------
-key = zomato_key.key
+key = Zomato_key.key
 
 def add_info(db_filename, res_id, res_name, res_rating):
     conn = sqlite3.connect(db_filename)
