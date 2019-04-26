@@ -58,5 +58,5 @@ average = str(total / 100)
 #create txt file
 file = open('Zomato_average_rating.txt','w')
 file.write('The average rating of breakfast restaurants in Atlanta is ')
-file.write(average[0:3])
+file.write(average[0:4])
 file.close()
